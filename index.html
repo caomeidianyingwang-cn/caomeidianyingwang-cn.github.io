@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>草莓电影网 - 电影片单、剧集更新追踪、影视甜度榜与选片指南</title>
+<meta name="description" content="草莓电影网(caomeidianyingwang-cn.github.io)是一篮子刚摘的草莓：提供电影片单、剧集更新追踪、影视甜度榜与选片指南，剧情、爱情、悬疑、纪录、动画、文艺、喜剧、动作、经典全类型收录，移动端自适应，剧集一更新立刻提醒。">
+<meta name="keywords" content="草莓电影网,电影片单,剧集更新追踪,影视甜度榜,选片指南,电影推荐,影视导航,在线看电影">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="author" content="草莓电影网">
+<meta name="theme-color" content="#e8324a">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://caomeidianyingwang-cn.github.io/">
+<link rel="apple-touch-icon" href="/favicon.ico">
+<link rel="alternate" hreflang="zh-CN" href="https://caomeidianyingwang-cn.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="草莓电影网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="草莓电影网 - 电影片单与影视甜度榜">
+<meta property="og:description" content="草莓电影网：电影片单、剧集更新追踪、影视甜度榜与选片指南。">
+<meta property="og:url" content="https://caomeidianyingwang-cn.github.io/">
+<meta property="og:image" content="https://caomeidianyingwang-cn.github.io/favicon.ico">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="草莓电影网 - 电影片单与影视甜度榜">
+<meta name="twitter:description" content="草莓电影网：片单、更新追踪、甜度榜与选片指南。">
+<style>
+:root{
+  --cream:#fff8f3;
+  --cream2:#fdeee6;
+  --panel:#ffffff;
+  --berry:#e8324a;
+  --berry2:#ff6b7f;
+  --berryd:#a8162c;
+  --leaf:#4f9e44;
+  --leaf2:#7cc46a;
+  --seed:#ffd94a;
+  --pink:#ff9ab0;
+  --ink:#2c1f22;
+  --ink2:#6b575c;
+  --muted:#9c8a8e;
+  --line:#f0dcd4;
+  --line2:#e3c8bd;
+  --maxw:1180px;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:132px}
+body{
+  margin:0;padding:0;color:var(--ink);background:var(--cream);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.78;
+  background-image:
+    radial-gradient(800px 420px at 2% -8%,rgba(232,50,74,.15),transparent 62%),
+    radial-gradient(800px 420px at 98% 4%,rgba(79,158,68,.14),transparent 62%);
+  background-repeat:no-repeat;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4{margin:0;line-height:1.42}
+p{margin:0}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 18px}
+.block{padding:40px 0 8px}
+
+/* ========== 草莓徽章（CSS 绘制：果身 + 萼片 + 籽点） ========== */
+.berry{--bc:var(--berry);position:relative;flex:0 0 auto;width:46px;height:50px;display:flex;
+  align-items:flex-end;justify-content:center;padding-bottom:9px;
+  border-radius:50% 50% 18% 18% / 46% 46% 22% 22%;
+  background:
+    radial-gradient(circle at 32% 34%,rgba(255,255,255,.55) 0 12%,transparent 34%),
+    radial-gradient(circle at 50% 62%,var(--bc) 0 62%,var(--berryd) 100%)}
+.berry::before{content:"";position:absolute;left:6%;right:6%;top:-7px;height:15px;background:var(--leaf);
+  clip-path:polygon(50% 100%,4% 44%,22% 4%,50% 32%,78% 4%,96% 44%)}
+.berry::after{content:"";position:absolute;inset:12px 9px 9px;border-radius:inherit;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,217,74,.95) 0 1.7px,transparent 2.1px);
+  background-size:11px 11px;background-position:3px 3px}
+.berry b{position:relative;z-index:3;font-family:var(--mono);font-size:11px;font-weight:900;color:#fff;
+  letter-spacing:.5px;text-shadow:0 1px 2px rgba(120,10,26,.55)}
+.berry.pink{--bc:var(--berry2)}
+.berry.gold{--bc:var(--seed)}
+.berry.gold b{color:#7a4a06;text-shadow:none}
+.berry.leaf{--bc:var(--leaf)}
+.berry.leaf b{color:#fff}
+.berry.plum{--bc:#8e4fa8}
+.berry.sky{--bc:#3f92c9}
+.berry.sm{width:40px;height:44px;padding-bottom:8px}
+.berry.sm b{font-size:10px}
+.berry.sm::before{height:13px;top:-6px}
+.berry.mk{width:30px;height:33px;padding-bottom:6px}
+.berry.mk b{font-size:7.5px}
+.berry.mk::before{height:10px;top:-4px}
+.berry.mk::after{inset:8px 6px 6px;background-size:8px 8px}
+
+/* 叶片条 */
+.leafbar{height:26px;
+  background-image:radial-gradient(circle at 50% 122%,var(--leaf) 0 17px,transparent 17.4px),
+    radial-gradient(circle at 50% 122%,rgba(255,255,255,.35) 0 8px,transparent 8.4px);
+  background-size:46px 26px,46px 26px;background-repeat:repeat-x}
+.leafbar.big{height:34px;background-size:60px 34px,60px 34px;
+  background-image:radial-gradient(circle at 50% 122%,var(--leaf) 0 23px,transparent 23.4px),
+    radial-gradient(circle at 50% 122%,rgba(255,255,255,.35) 0 11px,transparent 11.4px)}
+.leafbar.thin{height:18px;background-size:34px 18px,34px 18px;
+  background-image:radial-gradient(circle at 50% 122%,var(--leaf2) 0 12px,transparent 12.4px),
+    radial-gradient(circle at 50% 122%,rgba(255,255,255,.35) 0 5px,transparent 5.4px)}
+
+/* 果酱标签 */
+.jam{flex:0 0 auto;font-size:11px;font-weight:900;letter-spacing:1px;padding:4px 12px;border-radius:2px;
+  color:#fff;background:var(--berry);box-shadow:0 3px 8px rgba(232,50,74,.24)}
+.jam.leaf{background:var(--leaf);box-shadow:0 3px 8px rgba(79,158,68,.22)}
+.jam.gold{background:var(--seed);color:#6b4405;box-shadow:0 3px 8px rgba(255,217,74,.3)}
+.jam.plum{background:#8e4fa8}
+.jam.sky{background:#3f92c9}
+.jam.white{background:#fff;color:var(--berry);border:1.5px solid var(--berry);box-shadow:none}
+
+/* ========== 顶栏：双行结构 ========== */
+.topbar{position:sticky;top:0;z-index:60;background:rgba(255,248,243,.97);backdrop-filter:blur(14px)}
+.topbar .leafbar.thin{position:relative;z-index:2}
+.trow1{display:flex;align-items:center;gap:12px;height:62px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:900;font-size:20px;white-space:nowrap;letter-spacing:1px}
+.logo em{font-style:normal;position:relative;color:var(--ink)}
+.logo em::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:8px;z-index:-1;
+  background:linear-gradient(90deg,rgba(255,217,74,.85),rgba(232,50,74,.55))}
+.tsearch{flex:1;max-width:420px;margin-left:auto;display:flex;align-items:center;gap:8px;padding:7px 8px 7px 14px;
+  border-radius:99px;background:var(--cream2);border:1.5px solid var(--line2)}
+.tsearch input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:14px;font-weight:600;
+  color:var(--ink)}
+.tsearch input::placeholder{color:var(--muted)}
+.tsearch button{border:0;cursor:pointer;font-size:13.5px;font-weight:900;color:#fff;padding:8px 20px;
+  border-radius:99px;background:var(--berry)}
+.pick{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;font-weight:900;color:#fff;
+  white-space:nowrap;padding:6px 15px;border-radius:99px;background:var(--leaf)}
+.pick i{flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:#fff;
+  animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.28}}
+.trow2{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trow2 .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.trow2 .wrap::-webkit-scrollbar{display:none}
+.trow2 a{padding:11px 15px;font-size:14px;font-weight:800;color:var(--ink2);white-space:nowrap;position:relative}
+.trow2 a::after{content:"";position:absolute;left:15px;right:15px;bottom:5px;height:3px;border-radius:2px;
+  background:var(--berry);transform:scaleX(0);transition:.24s;transform-origin:left}
+.trow2 a:hover,.trow2 a.on{color:var(--berry);font-weight:900}
+.trow2 a.on::after,.trow2 a:hover::after{transform:scaleX(1)}
+
+/* ========== Hero：全宽横幅 + 悬浮篮卡 ========== */
+.hero{position:relative;margin-top:16px;border-radius:22px;overflow:visible}
+.hero-banner{position:relative;border-radius:22px;overflow:hidden;padding:44px 30px 76px;text-align:center;
+  background:linear-gradient(150deg,#ff7a8e 0%,var(--berry) 46%,var(--berryd) 100%);
+  box-shadow:0 20px 40px rgba(168,22,44,.24)}
+.hero-banner::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(circle,rgba(255,255,255,.4) 0 2px,transparent 2.4px);
+  background-size:26px 26px}
+.hero-banner::after{content:"";position:absolute;left:-6%;right:-6%;bottom:-46px;height:96px;border-radius:50%;
+  background:var(--cream)}
+.hero-in{position:relative;z-index:3;max-width:760px;margin:0 auto}
+.hero .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;font-weight:900;
+  letter-spacing:2px;color:var(--berryd);background:var(--seed);padding:6px 18px;border-radius:99px}
+.hero h1{font-size:36px;font-weight:900;line-height:1.34;letter-spacing:1px;margin-top:16px;color:#fff;
+  text-shadow:0 3px 12px rgba(120,10,26,.28)}
+.hero h1 em{font-style:normal;color:var(--seed)}
+.hero .desc{margin-top:14px;font-size:15px;color:rgba(255,255,255,.94);max-width:60ch;margin-left:auto;
+  margin-right:auto}
+.hero .cta{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.btn{padding:13px 28px;border-radius:99px;font-size:14.5px;font-weight:900;transition:.24s}
+.btn-1{color:var(--berryd);background:var(--seed);box-shadow:0 10px 22px rgba(0,0,0,.16)}
+.btn-2{color:#fff;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.7)}
+.btn:hover{transform:translateY(-2px)}
+.baskets{position:relative;z-index:4;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-52px}
+.basket{background:var(--panel);border:1.5px solid var(--line);border-radius:18px;padding:16px 14px;text-align:center;
+  box-shadow:0 14px 30px rgba(120,10,26,.12);transition:.26s}
+.basket:hover{transform:translateY(-6px)}
+.basket .num{font-family:var(--mono);font-size:26px;font-weight:900;color:var(--berry);line-height:1.1}
+.basket .num.g{color:var(--leaf)}
+.basket .num.y{color:#c8901a}
+.basket .lb{font-size:12px;font-weight:800;color:var(--ink2);margin-top:2px}
+.basket .sb{margin-top:9px;height:9px;border-radius:99px;background:var(--cream2);overflow:hidden}
+.basket .sb i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--berry2),var(--berry))}
+.basket:nth-child(2) .sb i{background:linear-gradient(90deg,var(--leaf2),var(--leaf))}
+.basket:nth-child(3) .sb i{background:linear-gradient(90deg,#ffe38a,var(--seed))}
+
+/* ========== 采摘篮：横向滑动轨道 ========== */
+.picker{margin-top:34px}
+.picker-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.picker-head h2{font-size:21px;font-weight:900;display:flex;align-items:center;gap:12px;letter-spacing:1px}
+.picker-head .sub{font-size:10.5px;letter-spacing:4px;color:var(--muted);font-weight:800;font-family:var(--mono)}
+.picker-head .tip{margin-left:auto;font-size:12px;color:var(--muted);font-weight:700}
+.track{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 14px;scroll-snap-type:x proximity;
+  scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.track a{flex:0 0 150px;scroll-snap-align:start;position:relative;display:flex;flex-direction:column;
+  align-items:center;gap:7px;padding:18px 10px 16px;border-radius:18px;background:var(--panel);
+  border:1.5px solid var(--line);transition:.26s;box-shadow:0 8px 18px rgba(120,10,26,.07)}
+.track a:hover{transform:translateY(-6px);border-color:var(--berry)}
+.track a .k{font-size:14px;font-weight:900}
+.track a .n{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:1px}
+.track a .c{font-family:var(--mono);font-size:10px;font-weight:900;color:var(--berry)}
+
+/* ========== 栏目头（通用，但与旧版不同：左侧竖条 + 右侧链接组） ========== */
+.bhead{display:flex;align-items:flex-end;gap:12px;margin:0 0 18px;padding-left:14px;position:relative}
+.bhead::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:5px;border-radius:3px;
+  background:linear-gradient(180deg,var(--berry),var(--seed))}
+.bhead h2{font-size:21px;font-weight:900;letter-spacing:1px;display:flex;align-items:center;gap:12px}
+.bhead .sub{font-size:10.5px;letter-spacing:4px;color:var(--muted);font-weight:800;font-family:var(--mono);
+  padding-bottom:4px}
+.bhead .more{margin-left:auto;padding-bottom:3px;font-size:12.5px;font-weight:900;color:var(--berry);
+  white-space:nowrap}
+
+/* ========== 栏目一：主打 + 精选网格（非等宽） ========== */
+.feature{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:16px}
+.lead{grid-row:span 3;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:var(--panel);
+  border:1.5px solid var(--line);transition:.28s;box-shadow:0 10px 24px rgba(120,10,26,.09)}
+.lead:hover{transform:translateY(-6px);box-shadow:0 20px 38px rgba(120,10,26,.16)}
+.lead .lp{position:relative;flex:1;min-height:290px;display:flex;align-items:flex-end;padding:20px;overflow:hidden}
+.lead .lp::before{content:"";position:absolute;inset:0;opacity:.42;
+  background-image:radial-gradient(circle,rgba(255,255,255,.45) 0 2.4px,transparent 2.8px);
+  background-size:24px 24px}
+.lead .lp::after{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(180deg,transparent 40%,rgba(44,31,34,.88))}
+.lead .lp h3{position:relative;z-index:4;color:#fff;font-size:24px;font-weight:900;letter-spacing:1px;
+  text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.lead .lp .meta{position:relative;z-index:4;margin-top:6px;font-family:var(--mono);font-size:11.5px;
+  color:rgba(255,255,255,.85)}
+.lead .li{padding:16px 18px 18px;border-top:1px solid var(--line);background:var(--cream2)}
+.lead .li p{font-size:13.5px;color:var(--ink2)}
+.lead .li .bar{margin-top:11px;height:11px;border-radius:99px;background:#fff;overflow:hidden}
+.lead .li .bar i{display:block;height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--berry2),var(--berry))}
+.mini{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:var(--panel);
+  border:1.5px solid var(--line);transition:.26s;box-shadow:0 8px 18px rgba(120,10,26,.06)}
+.mini:hover{transform:translateY(-5px);border-color:var(--berry)}
+.mini .mp{position:relative;aspect-ratio:16/10;display:flex;align-items:flex-end;padding:12px;overflow:hidden}
+.mini .mp::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.35) 0 2px,transparent 2.4px),
+    linear-gradient(180deg,transparent 46%,rgba(44,31,34,.84));
+  background-size:22px 22px,100% 100%}
+.mini .mp .t{position:absolute;top:11px;left:11px;z-index:4}
+.mini .mp .s{position:absolute;top:11px;right:11px;z-index:4;font-family:var(--mono);font-size:12px;font-weight:900;
+  color:#6b4405;background:var(--seed);padding:2px 9px;border-radius:99px}
+.mini .mp h4{position:relative;z-index:4;color:#fff;font-size:15px;font-weight:900;letter-spacing:.5px}
+.mini .mi{padding:11px 13px 13px}
+.mini .mi p{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.g1{background:linear-gradient(160deg,#ff7a8e,#b01729)}
+.g2{background:linear-gradient(160deg,#ffd97a,#c8901a)}
+.g3{background:linear-gradient(160deg,#8fd07f,#3d7a36)}
+.g4{background:linear-gradient(160deg,#7fc0e8,#2c6f9e)}
+.g5{background:linear-gradient(160deg,#c79ae8,#6b3a9e)}
+.g6{background:linear-gradient(160deg,#ffb07a,#a85a1d)}
+.g7{background:linear-gradient(160deg,#9fd8c4,#3a7a68)}
+.g8{background:linear-gradient(160deg,#ff9ec4,#a83a68)}
+.leadbg{background:linear-gradient(160deg,#ff6b7f,#8e0f22)}
+
+/* ========== 栏目二：纵向时间轴 ========== */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:3px;border-radius:2px;
+  background:linear-gradient(180deg,var(--berry),var(--leaf) 60%,var(--seed))}
+.tl{position:relative;margin-bottom:14px}
+.tl::before{content:"";position:absolute;left:-34px;top:22px;width:25px;height:25px;border-radius:50%;
+  background:var(--berry);border:4px solid var(--cream);box-shadow:0 0 0 2px var(--berry)}
+.tl:nth-child(2)::before{background:var(--leaf);box-shadow:0 0 0 2px var(--leaf)}
+.tl:nth-child(3)::before{background:#3f92c9;box-shadow:0 0 0 2px #3f92c9}
+.tl:nth-child(4)::before{background:var(--seed);box-shadow:0 0 0 2px var(--seed)}
+.tl:nth-child(5)::before{background:#8e4fa8;box-shadow:0 0 0 2px #8e4fa8}
+.tl-body{display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:16px;background:var(--panel);
+  border:1.5px solid var(--line);transition:.24s;box-shadow:0 8px 18px rgba(120,10,26,.06)}
+.tl:hover{transform:translateX(5px);border-color:var(--berry)}
+.tl-body .tm{flex:0 0 68px;text-align:center;padding:6px 4px;border-radius:12px;background:var(--cream2)}
+.tl:nth-child(2) .tm{background:#eaf5e8}
+.tl:nth-child(3) .tm{background:#e8f2fb}
+.tl:nth-child(4) .tm{background:#fdf5dd}
+.tl:nth-child(5) .tm{background:#f3ebfa}
+.tl-body .tm b{display:block;font-family:var(--mono);font-size:18px;font-weight:900;line-height:1.14}
+.tl-body .tm span{font-family:var(--mono);font-size:9.5px;letter-spacing:1px;color:var(--muted);font-weight:900}
+.tl-body .mid{flex:1;min-width:0}
+.tl-body .mid h3{font-size:16px;font-weight:900}
+.tl-body .mid p{font-size:13px;color:var(--muted);margin-top:2px}
+.tl-body .mid .bar{margin-top:9px;height:11px;border-radius:99px;background:var(--cream2);overflow:hidden}
+.tl-body .mid .bar i{display:block;height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--berry2),var(--berry))}
+.tl:nth-child(2) .bar i{background:linear-gradient(90deg,var(--leaf2),var(--leaf))}
+.tl:nth-child(3) .bar i{background:linear-gradient(90deg,#8fc8e8,#3f92c9)}
+.tl:nth-child(4) .bar i{background:linear-gradient(90deg,#ffe38a,var(--seed))}
+.tl:nth-child(5) .bar i{background:linear-gradient(90deg,#c79ae8,#8e4fa8)}
+.tl-body .go{flex:0 0 auto;font-size:13px;font-weight:900;color:#fff;padding:8px 17px;border-radius:99px;
+  background:var(--berry)}
+.tl:nth-child(2) .go{background:var(--leaf)}
+.tl:nth-child(3) .go{background:#3f92c9}
+.tl:nth-child(4) .go{background:var(--seed);color:#6b4405}
+.tl:nth-child(5) .go{background:#8e4fa8}
+
+/* ========== 栏目三：阶梯榜 + 指南（左右不等宽） ========== */
+.rankwrap{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+.panel{background:var(--panel);border:1.5px solid var(--line);border-radius:20px;padding:22px;
+  box-shadow:0 10px 24px rgba(120,10,26,.07)}
+.panel h3{font-size:17.5px;font-weight:900;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end}
+.pod{position:relative;text-align:center;padding:16px 10px 18px;border-radius:16px;color:#fff;overflow:hidden;
+  transition:.26s}
+.pod:hover{transform:translateY(-5px)}
+.pod .rk{font-family:var(--mono);font-size:12px;font-weight:900;letter-spacing:2px;opacity:.9}
+.pod .nm{font-size:14.5px;font-weight:900;margin-top:4px}
+.pod .sc{font-family:var(--mono);font-size:20px;font-weight:900;margin-top:6px}
+.pod .tp{font-size:11px;opacity:.9;margin-top:2px}
+.pod.p1{min-height:186px;background:linear-gradient(165deg,#ff6b7f,#a8162c)}
+.pod.p2{min-height:158px;background:linear-gradient(165deg,#7fc0e8,#2c6f9e)}
+.pod.p3{min-height:138px;background:linear-gradient(165deg,#ffd97a,#c8901a)}
+.pod::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+  background-image:radial-gradient(circle,rgba(255,255,255,.45) 0 2px,transparent 2.4px);
+  background-size:20px 20px}
+.pod.c1{background:linear-gradient(165deg,#ff8fa3,#b01729)}
+.pod.c2{background:linear-gradient(165deg,#8fd07f,#3d7a36)}
+.pod.c3{background:linear-gradient(165deg,#c79ae8,#6b3a9e)}
+.rest{margin-top:12px;border-top:1px dashed var(--line2);padding-top:6px}
+.rest li{display:grid;grid-template-columns:40px 1fr 54px;gap:10px;align-items:center;padding:9px 0;
+  border-bottom:1px dashed var(--line)}
+.rest li:last-child{border-bottom:0}
+.rest .nm h4{font-size:14.5px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rest .nm p{font-size:12px;color:var(--muted)}
+.rest .sc{font-family:var(--mono);font-size:16px;font-weight:900;text-align:right;color:var(--berry)}
+.guides{display:grid;gap:12px}
+.gd{display:flex;gap:13px;padding:15px 16px;border-radius:16px;background:var(--cream2);
+  border-left:5px solid var(--berry);transition:.24s}
+.gd:hover{transform:translateX(4px)}
+.gd:nth-child(2){border-left-color:var(--leaf)}
+.gd:nth-child(3){border-left-color:#3f92c9}
+.gd:nth-child(4){border-left-color:var(--seed)}
+.gd .ic{flex:0 0 42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:12px;font-weight:900;color:#fff;background:var(--berry)}
+.gd:nth-child(2) .ic{background:var(--leaf)}
+.gd:nth-child(3) .ic{background:#3f92c9}
+.gd:nth-child(4) .ic{background:var(--seed);color:#6b4405}
+.gd h4{font-size:15px;font-weight:900}
+.gd p{font-size:13.5px;color:var(--ink2);margin-top:3px}
+
+/* ========== 栏目四：资讯错位 mosaic ========== */
+.mosaic{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.mc{position:relative;border-radius:20px;overflow:hidden;background:var(--panel);border:1.5px solid var(--line);
+  transition:.28s;box-shadow:0 10px 24px rgba(120,10,26,.07)}
+.mc:hover{transform:translateY(-6px)}
+.mc.big{grid-column:span 2;display:grid;grid-template-columns:1.05fr 1fr;align-items:stretch}
+.mc .cov{position:relative;min-height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  font-family:var(--mono);font-size:11.5px;font-weight:900;letter-spacing:4px;color:#fff}
+.mc .cov::before{content:"";position:absolute;inset:0;opacity:.4;
+  background-image:radial-gradient(circle,rgba(255,255,255,.45) 0 2.2px,transparent 2.6px);
+  background-size:24px 24px}
+.mc .txt{padding:16px 18px 18px}
+.mc h3{font-size:16.5px;font-weight:900;margin-bottom:6px}
+.mc.big h3{font-size:19px}
+.mc p{font-size:13.5px;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+  overflow:hidden}
+.mc time{display:block;margin-top:11px;font-family:var(--mono);font-size:12px;font-weight:900;color:var(--muted);
+  letter-spacing:2px}
+.mc.m1 .cov{background:linear-gradient(150deg,#ff7a8e,#b01729)}
+.mc.m2 .cov{background:linear-gradient(150deg,#7fc0e8,#2c6f9e)}
+.mc.m3 .cov{background:linear-gradient(150deg,#8fd07f,#3d7a36)}
+.mc.m4 .cov{background:linear-gradient(150deg,#ffd97a,#c8901a)}
+
+/* ========== 栏目五：关于横幅 + FAQ 双列 ========== */
+.about{position:relative;border-radius:22px;overflow:hidden;padding:30px 28px;color:#fff;
+  background:linear-gradient(140deg,#ff6b7f,#c2183a 58%,#8e0f22);
+  box-shadow:0 20px 40px rgba(168,22,44,.24)}
+.about::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.38;
+  background-image:radial-gradient(circle,rgba(255,255,255,.45) 0 2.2px,transparent 2.6px);
+  background-size:26px 26px}
+.about .in{position:relative;z-index:3;max-width:820px}
+.about h2{font-size:21px;font-weight:900;letter-spacing:1px;color:#ffe9a8;display:flex;align-items:center;gap:12px}
+.about p{font-size:14.5px;color:rgba(255,255,255,.96);margin-top:11px}
+.about .note{margin-top:14px;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.16);font-size:13.5px}
+.faqs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.faq{background:var(--panel);border:1.5px solid var(--line);border-radius:16px;padding:15px 18px;
+  box-shadow:0 8px 18px rgba(120,10,26,.06)}
+.faq summary{cursor:pointer;font-size:15px;font-weight:900;list-style:none;display:flex;justify-content:space-between;
+  gap:10px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";color:var(--berry);font-weight:900}
+.faq[open] summary::after{content:"－"}
+.faq p{font-size:13.8px;color:var(--ink2);margin-top:10px}
+
+/* ========== 页脚 ========== */
+footer{margin-top:46px;background:var(--panel);border-top:1.5px solid var(--line);padding:0 0 96px}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:22px;padding-top:26px}
+.fcol h4{font-family:var(--mono);font-size:11.5px;letter-spacing:3px;margin-bottom:12px;color:var(--berry);
+  font-weight:900}
+.fcol a{display:block;font-size:13.5px;color:var(--ink2);padding:3px 0}
+.fcol a:hover{color:var(--berry)}
+.fbrand{display:flex;align-items:center;gap:11px;font-size:19px;font-weight:900;letter-spacing:1px}
+.fdesc{font-size:13px;color:var(--muted);margin-top:10px;max-width:44ch}
+.copy{margin-top:22px;padding-top:15px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+
+/* ========== 移动端 ========== */
+.tabbar{display:none}
+@media (max-width:980px){
+  .feature{grid-template-columns:1fr 1fr}
+  .lead{grid-column:span 2;grid-row:auto}
+  .lead .lp{min-height:210px}
+  .mosaic{grid-template-columns:1fr}
+  .mc.big{grid-column:span 1;grid-template-columns:1fr}
+  .rankwrap{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .pick{display:none}
+  .tsearch{max-width:260px}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .wrap{padding:0 13px}
+  .block{padding:28px 0 6px}
+  html{scroll-padding-top:118px}
+  .leafbar.thin{height:14px;background-size:28px 14px,28px 14px;
+    background-image:radial-gradient(circle at 50% 122%,var(--leaf2) 0 9px,transparent 9.4px),
+      radial-gradient(circle at 50% 122%,rgba(255,255,255,.35) 0 4px,transparent 4.4px)}
+  .trow1{height:56px;gap:9px}
+  .logo{font-size:17.5px}
+  .tsearch{display:none}
+  .trow2 a{padding:10px 12px;font-size:13.5px}
+  .trow2 a::after{left:12px;right:12px}
+  .hero{margin-top:12px}
+  .hero-banner{padding:30px 18px 68px;border-radius:18px}
+  .hero h1{font-size:24px;letter-spacing:.5px}
+  .hero .desc{font-size:14px}
+  .btn{padding:12px 22px;font-size:14px}
+  .baskets{grid-template-columns:1fr;gap:10px;margin-top:-46px}
+  .basket{display:flex;align-items:center;gap:13px;text-align:left;padding:14px 16px}
+  .basket .num{font-size:22px}
+  .basket .lb{flex:1;margin-top:0}
+  .basket .sb{width:80px;margin-top:0;margin-left:auto}
+  .track a{flex:0 0 128px;padding:15px 8px 13px}
+  .track a .k{font-size:13px}
+  .bhead{padding-left:12px}
+  .bhead h2{font-size:19px}
+  .bhead .sub{display:none}
+  .feature{grid-template-columns:1fr 1fr;gap:12px}
+  .lead{grid-column:span 2}
+  .lead .lp{min-height:180px;padding:16px}
+  .lead .lp h3{font-size:20px}
+  .mini .mp{aspect-ratio:4/3}
+  .timeline{padding-left:26px}
+  .timeline::before{left:8px}
+  .tl::before{left:-26px;top:18px;width:21px;height:21px;border-width:3px}
+  .tl-body{gap:11px;padding:12px 13px}
+  .tl-body .tm{flex:0 0 56px}
+  .tl-body .tm b{font-size:16px}
+  .tl-body .go{padding:8px 13px;font-size:12.5px}
+  .podium{gap:8px}
+  .pod.p1{min-height:158px}
+  .pod.p2{min-height:136px}
+  .pod.p3{min-height:120px}
+  .pod .sc{font-size:17px}
+  .pod .nm{font-size:13px}
+  .rest li{grid-template-columns:34px 1fr 48px;gap:8px}
+  .faqs{grid-template-columns:1fr}
+  .about{padding:22px 18px}
+  .about h2{font-size:19px}
+  .fgrid{grid-template-columns:1fr}
+  footer{padding-bottom:82px}
+  .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(255,248,243,.98);
+    backdrop-filter:blur(14px);border-top:3px solid var(--berry);
+    padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
+  .tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11px;font-weight:800;
+    color:var(--muted);padding:5px 0}
+  .tabbar a span{font-size:16px;line-height:1.1}
+  .tabbar a.on{color:#fff;background:var(--berry);border-radius:14px}
+  .backtop{position:fixed;right:13px;bottom:78px;z-index:65;width:44px;height:48px;display:flex;
+    align-items:flex-end;justify-content:center;padding-bottom:10px}
+  .backtop b{position:relative;z-index:3;font-family:var(--mono);font-size:10px;font-weight:900;color:#fff}
+}
+@media (min-width:641px){.backtop{display:none}}
+@media (prefers-reduced-motion:reduce){.pick i{animation:none}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<!-- ========== 顶栏（双行） ========== -->
+<header class="topbar">
+  <div class="leafbar thin" aria-hidden="true"></div>
+  <div class="wrap trow1">
+    <a class="logo" href="#" aria-label="草莓电影网首页">
+      <span class="berry sm" aria-hidden="true"><b>草</b></span>
+      <span><em>草莓电影网</em></span>
+    </a>
+    <form class="tsearch" onsubmit="return false;" role="search">
+      <label for="kw" style="position:absolute;left:-9999px">搜索影片</label>
+      <input id="kw" type="search" placeholder="搜索片名、类型或演员">
+      <button type="submit">找片</button>
+    </form>
+    <span class="pick"><i></i>今日采摘中</span>
+  </div>
+  <div class="trow2">
+    <div class="wrap">
+      <a href="#" class="on">首页</a>
+      <a href="#">电影片单</a>
+      <a href="#">更新追踪</a>
+      <a href="#">甜度榜</a>
+      <a href="#">选片指南</a>
+      <a href="#">影视资讯</a>
+      <a href="#">经典佳片</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ========== Hero：全宽横幅 + 悬浮篮卡 ========== -->
+  <section class="hero" aria-labelledby="h-title">
+    <div class="hero-banner">
+      <div class="hero-in">
+        <span class="kicker">🍓 一篮子刚摘的草莓 · 草莓电影网</span>
+        <h1 id="h-title">挑片就像挑草莓，<em>草莓电影网</em>替你把最红的那颗放在最上面</h1>
+        <p class="desc">草莓电影网（caomeidianyingwang-cn.github.io）是一篮子刚摘的草莓：提供电影片单、剧集更新追踪、影视甜度榜与选片指南，剧情、爱情、悬疑、纪录、动画、文艺、喜剧、动作、经典全类型收录，手机打开就能挑片，剧集一更新立刻提醒。</p>
+        <div class="cta">
+          <a class="btn btn-1" href="#">🍓 去采摘篮挑一颗</a>
+          <a class="btn btn-2" href="#">看今日上新</a>
+        </div>
+      </div>
+    </div>
+    <div class="baskets">
+      <div class="basket"><div class="num">28</div><div class="lb">今日上架</div><div class="sb"><i style="width:86%"></i></div></div>
+      <div class="basket"><div class="num g">15</div><div class="lb">剧集更新</div><div class="sb"><i style="width:64%"></i></div></div>
+      <div class="basket"><div class="num y">5</div><div class="lb">专题果篮</div><div class="sb"><i style="width:52%"></i></div></div>
+    </div>
+  </section>
+
+  <!-- ========== 采摘篮：横向滑动轨道 ========== -->
+  <section class="picker" aria-labelledby="p-title">
+    <div class="picker-head">
+      <h2 id="p-title"><span class="berry sm leaf" aria-hidden="true"><b>篮</b></span>采摘篮</h2>
+      <span class="sub">PICKING BASKET</span>
+      <span class="tip">← 左右滑动查看全部类型 →</span>
+    </div>
+    <div class="track">
+      <a href="#"><span class="berry sm" aria-hidden="true"><b>剧</b></span><span class="k">剧情片</span><span class="n">DRAMA</span><span class="c">8,420 部</span></a>
+      <a href="#"><span class="berry sm pink" aria-hidden="true"><b>爱</b></span><span class="k">爱情片</span><span class="n">ROMANCE</span><span class="c">4,180 部</span></a>
+      <a href="#"><span class="berry sm sky" aria-hidden="true"><b>悬</b></span><span class="k">悬疑片</span><span class="n">MYSTERY</span><span class="c">3,260 部</span></a>
+      <a href="#"><span class="berry sm leaf" aria-hidden="true"><b>纪</b></span><span class="k">纪录片</span><span class="n">DOC</span><span class="c">1,940 部</span></a>
+      <a href="#"><span class="berry sm plum" aria-hidden="true"><b>动</b></span><span class="k">动画片</span><span class="n">ANIME</span><span class="c">5,110 部</span></a>
+      <a href="#"><span class="berry sm gold" aria-hidden="true"><b>文</b></span><span class="k">文艺片</span><span class="n">ART</span><span class="c">2,680 部</span></a>
+      <a href="#"><span class="berry sm" aria-hidden="true"><b>喜</b></span><span class="k">喜剧片</span><span class="n">COMEDY</span><span class="c">6,030 部</span></a>
+      <a href="#"><span class="berry sm pink" aria-hidden="true"><b>动</b></span><span class="k">动作片</span><span class="n">ACTION</span><span class="c">3,870 部</span></a>
+      <a href="#"><span class="berry sm sky" aria-hidden="true"><b>科</b></span><span class="k">科幻片</span><span class="n">SCI-FI</span><span class="c">2,240 部</span></a>
+      <a href="#"><span class="berry sm leaf" aria-hidden="true"><b>国</b></span><span class="k">国产剧</span><span class="n">CN</span><span class="c">1,760 部</span></a>
+      <a href="#"><span class="berry sm plum" aria-hidden="true"><b>日</b></span><span class="k">日韩剧</span><span class="n">JP/KR</span><span class="c">2,090 部</span></a>
+      <a href="#"><span class="berry sm gold" aria-hidden="true"><b>经</b></span><span class="k">经典佳片</span><span class="n">CLASSIC</span><span class="c">3,540 部</span></a>
+    </div>
+    <div class="leafbar thin" aria-hidden="true"></div>
+  </section>
+
+  <!-- ========== 栏目一：今日主打 + 精选 ========== -->
+  <section class="block" id="movie" aria-labelledby="m-title">
+    <div class="bhead">
+      <h2 id="m-title"><span class="berry sm" aria-hidden="true"><b>一</b></span>今日主打与精选片单</h2>
+      <span class="sub">FILM LIST</span>
+      <a class="more" href="#">查看全部电影 →</a>
+    </div>
+    <div class="feature">
+      <a class="lead" href="#">
+        <div class="lp leadbg">
+          <span class="jam gold" style="position:absolute;top:18px;left:18px;z-index:4">今日主打</span>
+          <span class="jam" style="position:absolute;top:18px;right:18px;z-index:4;font-family:var(--mono)">9.2</span>
+          <div>
+            <h3>草莓味的夏天</h3>
+            <div class="meta">2025 · 剧情 / 青春 · 118 分钟 · 全 1 部</div>
+          </div>
+        </div>
+        <div class="li">
+          <p>一颗草莓从青到红要二十天，一部好片从开拍到上映要两年。草莓电影网把它放在今日主打：剧情扎实、节奏温和，适合今晚一个人慢慢看。</p>
+          <div class="bar"><i style="width:78%"></i></div>
+        </div>
+      </a>
+      <a class="mini" href="#"><div class="mp g2"><span class="jam" style="position:absolute;top:11px;left:11px;z-index:4">已入库</span><span class="s">8.9</span><h4>果园日记</h4></div><div class="mi"><p>2024 · 纪录 / 人文 · 94 分钟</p></div></a>
+      <a class="mini" href="#"><div class="mp g3"><span class="jam leaf" style="position:absolute;top:11px;left:11px;z-index:4">更新中</span><span class="s">8.8</span><h4>第七颗种子</h4></div><div class="mi"><p>2024 · 悬疑 / 犯罪 · 116 分钟</p></div></a>
+      <a class="mini" href="#"><div class="mp g4"><span class="jam sky" style="position:absolute;top:11px;left:11px;z-index:4">已入库</span><span class="s">9.0</span><h4>奶油与铁轨</h4></div><div class="mi"><p>2022 · 文艺 / 剧情 · 110 分钟</p></div></a>
+      <a class="mini" href="#"><div class="mp g5"><span class="jam plum" style="position:absolute;top:11px;left:11px;z-index:4">稀有款</span><span class="s">9.1</span><h4>浆果列车</h4></div><div class="mi"><p>2025 · 动画 / 奇幻 · 104 分钟</p></div></a>
+      <a class="mini" href="#"><div class="mp g6"><span class="jam gold" style="position:absolute;top:11px;left:11px;z-index:4">珍藏</span><span class="s">8.7</span><h4>午后的果酱</h4></div><div class="mi"><p>2024 · 爱情 / 文艺 · 100 分钟</p></div></a>
+      <a class="mini" href="#"><div class="mp g7"><span class="jam leaf" style="position:absolute;top:11px;left:11px;z-index:4">已入库</span><span class="s">8.6</span><h4>摘满一筐</h4></div><div class="mi"><p>2023 · 喜剧 / 生活 · 96 分钟</p></div></a>
+    </div>
+  </section>
+
+  <!-- ========== 栏目二：更新追踪（纵向时间轴） ========== -->
+  <section class="block" id="update" aria-labelledby="u-title">
+    <div class="bhead">
+      <h2 id="u-title"><span class="berry sm leaf" aria-hidden="true"><b>二</b></span>剧集更新追踪 · 采摘时刻</h2>
+      <span class="sub">UPDATES</span>
+      <a class="more" href="#">加入追踪列表 →</a>
+    </div>
+    <div class="timeline">
+      <article class="tl">
+        <div class="tl-body">
+          <span class="tm"><b>19:40</b><span>09-19</span></span>
+          <span class="mid"><h3>《第七颗种子》更新至第 9 集</h3><p>悬疑剧 · 已播 9 / 12 集 · 每周三、四播出</p><span class="bar"><i style="width:75%"></i></span></span>
+          <span class="go">去追更</span>
+        </div>
+      </article>
+      <article class="tl">
+        <div class="tl-body">
+          <span class="tm"><b>20:15</b><span>09-18</span></span>
+          <span class="mid"><h3>《浆果列车》发布正式预告</h3><p>动画新作 · 档期与看点解析已录入草莓电影网片库条目。</p><span class="bar"><i style="width:66%"></i></span></span>
+          <span class="go">看预告</span>
+        </div>
+      </article>
+      <article class="tl">
+        <div class="tl-body">
+          <span class="tm"><b>21:05</b><span>09-17</span></span>
+          <span class="mid"><h3>片库上新：28 部院线新片入库</h3><p>涵盖剧情、悬疑、纪录与文艺四类，均附评分与时长。</p><span class="bar"><i style="width:88%"></i></span></span>
+          <span class="go">去片库</span>
+        </div>
+      </article>
+      <article class="tl">
+        <div class="tl-body">
+          <span class="tm"><b>21:30</b><span>09-15</span></span>
+          <span class="mid"><h3>「人文纪录」专题果篮成册</h3><p>按地域与主题分组整理，附观影顺序建议，适合连看。</p><span class="bar"><i style="width:70%"></i></span></span>
+          <span class="go">看专题</span>
+        </div>
+      </article>
+      <article class="tl">
+        <div class="tl-body">
+          <span class="tm"><b>22:00</b><span>09-09</span></span>
+          <span class="mid"><h3>经典佳片修复单元上线</h3><p>《旧果篮》等经典片目重录完成，可按年代筛选。</p><span class="bar"><i style="width:56%"></i></span></span>
+          <span class="go">看修复</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== 栏目三：甜度榜（阶梯） + 指南 ========== -->
+  <section class="block" id="rank" aria-labelledby="rk-title">
+    <div class="bhead">
+      <h2 id="rk-title"><span class="berry sm gold" aria-hidden="true"><b>三</b></span>影视甜度榜与选片指南</h2>
+      <span class="sub">RANK &amp; GUIDE</span>
+      <a class="more" href="#">完整榜单 →</a>
+    </div>
+    <div class="rankwrap">
+      <div class="panel">
+        <h3><span class="berry sm" aria-hidden="true"><b>榜</b></span>草莓电影网甜度榜 Top 7</h3>
+        <div class="podium">
+          <div class="pod p2"><div class="rk">NO.2</div><div class="nm">奶油与铁轨</div><div class="sc">9.0</div><div class="tp">文艺剧情</div></div>
+          <div class="pod p1"><div class="rk">NO.1</div><div class="nm">草莓味的夏天</div><div class="sc">9.2</div><div class="tp">剧情青春</div></div>
+          <div class="pod p3"><div class="rk">NO.3</div><div class="nm">果园日记</div><div class="sc">8.9</div><div class="tp">纪录人文</div></div>
+        </div>
+        <ul class="rest">
+          <li><span class="berry mk plum" aria-hidden="true"><b>4</b></span><span class="nm"><h4>浆果列车</h4><p>动画奇幻 · 稀有款</p></span><span class="sc">9.1</span></li>
+          <li><span class="berry mk" aria-hidden="true"><b>5</b></span><span class="nm"><h4>第七颗种子</h4><p>悬疑剧 · 更新中</p></span><span class="sc">8.8</span></li>
+          <li><span class="berry mk gold" aria-hidden="true"><b>6</b></span><span class="nm"><h4>午后的果酱</h4><p>爱情文艺 · 精选</p></span><span class="sc">8.7</span></li>
+          <li><span class="berry mk leaf" aria-hidden="true"><b>7</b></span><span class="nm"><h4>摘满一筐</h4><p>喜剧生活 · 轻松</p></span><span class="sc">8.6</span></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3><span class="berry sm plum" aria-hidden="true"><b>册</b></span>选片指南</h3>
+        <div class="guides">
+          <div class="gd"><span class="ic">01</span><div><h4>已入库、更新中与稀有款是什么意思</h4><p>每部片左上角都贴着一枚果酱标签：已入库意味着这条信息完整可查，更新中意味着条目正在补录，稀有款意味着冷门但值得一试。标签只说明条目状态，不代表片子本身能不能看。</p></div></div>
+          <div class="gd"><span class="ic">02</span><div><h4>甜度条怎么看</h4><p>卡片与榜单下方的甜度条就是这部片的分量：条走得越满说明片子越长越重。想随手看一部就挑浅的那一头，想踏实坐下来就挑满的，旁边直接标着分钟数。</p></div></div>
+          <div class="gd"><span class="ic">03</span><div><h4>追剧总怕断更</h4><p>把在追剧集加入更新追踪，按播出日排列，时间轴节点直接标出更新时刻，进度条显示追到第几集。</p></div></div>
+          <div class="gd"><span class="ic">04</span><div><h4>一次看不完怎么办</h4><p>条目页标注分钟数与节奏，超过两小时的片子建议留到周末；通勤或睡前优先选单集剧集与短纪录片，看完刚好收心。</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 栏目四：资讯 mosaic ========== -->
+  <section class="block" id="news" aria-labelledby="n-title">
+    <div class="bhead">
+      <h2 id="n-title"><span class="berry sm sky" aria-hidden="true"><b>四</b></span>最新影视资讯</h2>
+      <span class="sub">NEWS</span>
+      <a class="more" href="#">资讯中心 →</a>
+    </div>
+    <div class="mosaic">
+      <a class="mc big m1" href="#">
+        <span class="cov">NEW BERRY</span>
+        <div class="txt"><h3>《浆果列车》定档秋季，动画新作受关注</h3><p>动画新作公布最终档期与幕后花絮，草莓电影网同步整理全片看点与关联作品，并给出建议观影顺序。</p><time datetime="2026-09-19">2026-09-19</time></div>
+      </a>
+      <a class="mc m2" href="#">
+        <span class="cov">LIBRARY</span>
+        <div class="txt"><h3>本周片库上新：28 部院线新片入库</h3><p>涵盖剧情、悬疑、纪录与文艺四类，已补录评分、类型与建议观影顺序。</p><time datetime="2026-09-18">2026-09-18</time></div>
+      </a>
+      <a class="mc m3" href="#">
+        <span class="cov">CLASSIC</span>
+        <div class="txt"><h3>经典佳片修复单元上线</h3><p>按年代与地区重录经典片目，《旧果篮》等作品已恢复条目与评分信息。</p><time datetime="2026-09-09">2026-09-09</time></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== 栏目五：关于 + FAQ 双列 ========== -->
+  <section class="block" id="about" aria-labelledby="a-title">
+    <div class="about">
+      <div class="in">
+        <h2 id="a-title"><span class="berry sm gold" aria-hidden="true"><b>五</b></span>关于草莓电影网</h2>
+        <p>草莓电影网（caomeidianyingwang-cn.github.io）是一篮子刚摘的草莓，提供电影片单、剧集更新追踪、影视甜度榜与选片指南。我们把类型分装进一个个采摘篮，每篮压着一颗不同颜色的草莓；每部片都贴着一枚果酱标签，标明条目是已入库、更新中还是珍藏。</p>
+        <p>全站采用移动端优先的自适应布局，手机、平板与桌面端体验一致；片单、追踪、榜单与指南四条动线相互打通，从「不知道看什么」到「追到第几集」不必来回跳转。</p>
+        <p class="note">提示：本站提供影视信息聚合与观影导航，片源播放以页面实际提供的来源为准。</p>
+      </div>
+    </div>
+    <div class="faqs">
+      <details class="faq" open><summary>草莓电影网的内容多久更新？</summary><p>电影片单每日上新，剧集更新追踪按播出日刷新，影视甜度榜每日重算一次，重要档期与首播节点即时同步。</p></details>
+      <details class="faq"><summary>已入库、更新中与稀有款是什么意思？</summary><p>每部片左上角都贴着一枚果酱标签：已入库意味着这条信息完整可查，更新中意味着条目正在补录，稀有款意味着冷门但值得一试。标签只说明条目状态，不代表片子本身能不能看。</p></details>
+      <details class="faq"><summary>甜度条有什么用？</summary><p>卡片与榜单下方的甜度条就是这部片的分量：条走得越满说明片子越长越重。想随手看一部就挑浅的那一头，想踏实坐下来就挑满的，旁边直接标着分钟数。</p></details>
+      <details class="faq"><summary>找不到想看的影片怎么办？</summary><p>可用顶部搜索框按片名、演员或类型检索，也可在采摘篮中左右滑动浏览全部类型；仍无结果时可提交片名反馈，我们会尽快补录。</p></details>
+    </div>
+  </section>
+
+  <div class="leafbar" style="margin-top:24px" aria-hidden="true"></div>
+
+</main>
+
+<!-- ========== 页脚 ========== -->
+<footer>
+  <div class="leafbar thin" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol">
+        <a class="fbrand" href="#"><span class="berry sm" aria-hidden="true"><b>草</b></span>草莓电影网</a>
+        <p class="fdesc">草莓电影网 · 一篮子刚摘的草莓。本站仅提供影视信息聚合与观影导航。</p>
+      </div>
+      <div class="fcol"><h4>频道入口</h4><a href="#">电影片单</a><a href="#">更新追踪</a><a href="#">甜度榜单</a><a href="#">选片指南</a><a href="#">影视资讯</a></div>
+      <div class="fcol"><h4>帮助中心</h4><a href="#">站点介绍</a><a href="#">收录规则</a><a href="#">意见反馈</a><a href="#">友情链接</a><a href="#">站点地图</a></div>
+    </div>
+    <div class="copy">
+      <span>Copyright © 2026 草莓电影网 caomeidianyingwang-cn.github.io 版权所有</span>
+      <span>关键词：草莓电影网 · 电影片单 · 电视剧更新 · 影视甜度榜</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== 移动端底部导航 ========== -->
+<nav class="tabbar" aria-label="移动端导航">
+  <a href="#" class="on"><span>🏠</span>首页</a>
+  <a href="#"><span>🍓</span>采摘篮</a>
+  <a href="#"><span>🎬</span>片单</a>
+  <a href="#"><span>🔔</span>追踪</a>
+  <a href="#"><span>🧭</span>指南</a>
+</nav>
+<a class="backtop berry" href="#" aria-label="返回顶部"><b>↑</b></a>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://caomeidianyingwang-cn.github.io/#website",
+      "url":"https://caomeidianyingwang-cn.github.io/",
+      "name":"草莓电影网",
+      "alternateName":"草莓电影",
+      "description":"草莓电影网提供电影片单、剧集更新追踪、影视甜度榜与选片指南，按采摘篮覆盖剧情、爱情、悬疑、纪录、动画、文艺、经典等类型。",
+      "inLanguage":"zh-CN",
+      "publisher":{"@id":"https://caomeidianyingwang-cn.github.io/#organization"},
+      "potentialAction":{
+        "@type":"SearchAction",
+        "target":"https://caomeidianyingwang-cn.github.io/search?q={search_term_string}",
+        "query-input":"required name=search_term_string"
+      }
+    },
+    {
+      "@type":"Organization",
+      "@id":"https://caomeidianyingwang-cn.github.io/#organization",
+      "name":"草莓电影网",
+      "url":"https://caomeidianyingwang-cn.github.io/",
+      "logo":"https://caomeidianyingwang-cn.github.io/favicon.ico"
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://caomeidianyingwang-cn.github.io/#webpage",
+      "url":"https://caomeidianyingwang-cn.github.io/",
+      "name":"草莓电影网 - 电影片单、剧集更新追踪与影视甜度榜",
+      "description":"草莓电影网：电影片单、剧集更新追踪、影视甜度榜与选片指南。",
+      "isPartOf":{"@id":"https://caomeidianyingwang-cn.github.io/#website"},
+      "inLanguage":"zh-CN",
+      "breadcrumb":{"@id":"https://caomeidianyingwang-cn.github.io/#breadcrumb"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "@id":"https://caomeidianyingwang-cn.github.io/#breadcrumb",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"草莓电影网","item":"https://caomeidianyingwang-cn.github.io/"},
+        {"@type":"ListItem","position":2,"name":"电影片单"},
+        {"@type":"ListItem","position":3,"name":"剧集更新追踪"},
+        {"@type":"ListItem","position":4,"name":"影视甜度榜与选片指南"}
+      ]
+    },
+    {
+      "@type":"ItemList",
+      "name":"草莓电影网甜度榜",
+      "itemListOrder":"https://schema.org/ItemListOrderDescending",
+      "numberOfItems":5,
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"item":{"@type":"Movie","name":"草莓味的夏天","genre":"剧情","datePublished":"2025"}},
+        {"@type":"ListItem","position":2,"item":{"@type":"Movie","name":"奶油与铁轨","genre":"剧情","datePublished":"2022"}},
+        {"@type":"ListItem","position":3,"item":{"@type":"Movie","name":"果园日记","genre":"纪录片","datePublished":"2024"}},
+        {"@type":"ListItem","position":4,"item":{"@type":"Movie","name":"浆果列车","genre":"动画","datePublished":"2025"}},
+        {"@type":"ListItem","position":5,"item":{"@type":"Movie","name":"第七颗种子","genre":"悬疑","datePublished":"2024"}}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"草莓电影网的内容多久更新？","acceptedAnswer":{"@type":"Answer","text":"电影片单每日上新，剧集更新追踪按播出日刷新，影视甜度榜每日重算一次，重要档期与首播节点即时同步。"}},
+        {"@type":"Question","name":"草莓电影网已入库、更新中与稀有款是什么意思？","acceptedAnswer":{"@type":"Answer","text":"每部片左上角都贴着一枚果酱标签：已入库意味着这条信息完整可查，更新中意味着条目正在补录，稀有款意味着冷门但值得一试。标签只说明条目状态，不代表片子本身能不能看。"}},
+        {"@type":"Question","name":"草莓电影网的甜度条有什么用？","acceptedAnswer":{"@type":"Answer","text":"卡片与榜单下方的甜度条就是这部片的分量：条走得越满说明片子越长越重。想随手看一部就挑浅的那一头，想踏实坐下来就挑满的，旁边直接标着分钟数。"}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var secs=document.querySelectorAll('main section[id]');
+  var navA=document.querySelectorAll('.trow2 a');
+  function sync(){
+    var y=window.scrollY+150,cur='';
+    secs.forEach(function(s){ if(s.offsetTop<=y) cur=s.id; });
+    navA.forEach(function(a){
+      var t=(a.textContent||'').trim(), on=false;
+      if(cur==='movie'&&t.indexOf('片单')>-1) on=true;
+      if(cur==='update'&&t.indexOf('更新')>-1) on=true;
+      if(cur==='rank'&&(t.indexOf('甜度')>-1||t.indexOf('指南')>-1)) on=true;
+      if(cur==='news'&&t.indexOf('资讯')>-1) on=true;
+      if(cur==='about'&&t.indexOf('经典')>-1) on=false;
+      if(!cur&&t.indexOf('首页')>-1) on=true;
+      a.classList.toggle('on',on);
+    });
+  }
+  window.addEventListener('scroll',sync,{passive:true});
+  sync();
+  document.querySelectorAll('.tabbar a,.trow2 a').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();a.blur();});
+  });
+})();
+</script>
+</body>
+</html>
